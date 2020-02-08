@@ -15,20 +15,15 @@ class Location(models.Model):
 	created_at = models.DateField(auto_now_add = True)
 	updated_at = models.DateField(auto_now = True)
 
-class State(models.Model):
+class Package(models.Model):
+	name = models.CharField(max_length = 50)
+	description = models.CharField(max_length = 250)
+	client = models.ForeignKey(User, on_delete = models.CASCADE)
 	state_choices = [
 		('bodega', 'bodega'),
 		('transito', 'transito'),
 		('entregado', 'entregado'),
 	]
-	state = models.CharField(max_length = 10, choices = state_choices)
-	created_at = models.DateField(auto_now_add = True)
-	updated_at = models.DateField(auto_now = True)
-
-class Package(models.Model):
-	name = models.CharField(max_length = 50)
-	description = models.CharField(max_length = 250)
-	state = models.ForeignKey(State, on_delete = models.CASCADE)
-	client = models.ForeignKey(User, on_delete = models.CASCADE)
+	state = models.CharField(max_length = 10, choices = state_choices, default = state_choices[0][0])
 	created_at = models.DateField(auto_now_add = True)
 	updated_at = models.DateField(auto_now = True)

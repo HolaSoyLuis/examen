@@ -1,12 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Provider from 'react-redux'
+import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// location
+import Location from './components/Location/Location'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// package
+import Package from './components/Package/Package'
+
+const Root = [
+    <BrowserRouter>
+        <Switch>
+            {/* <Route path='signin' component={} />
+            <Route path='signup' component={} />
+            <Route path='signout' component={} />
+            <Route path='signup' component={} />
+            <Redirect from='/' to='signin'/> */}
+            
+            <Route path='/location' component={Location} />
+            {/* <Route path='location/create' component={} />
+            <Route path='location/edit/:item' component={} /> */}
+
+            <Route path='/package' component={Package} />
+            {/* <Route path='package/create' component={} />
+            <Route path='package/edit/:item' component={} /> */}
+
+        </Switch>
+    </BrowserRouter>
+]
+
+ReactDOM.render(Root, document.getElementById('root'))

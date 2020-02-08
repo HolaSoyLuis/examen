@@ -1,0 +1,5 @@
+The component/component_name/index.js will be our container component
+can be a stateless component?
+
+the container has all of the logic and (stateless) just
+have the presentational parameters
