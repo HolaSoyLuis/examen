@@ -1,8 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Provider from 'react-redux'
-import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
+// import Provider from 'react-redux'
+// import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css';
+
+// login
+import SignIn from './components/Auth/SignIn'
+import SignUp from './components/Auth/SignUp'
 
 // location
 import Location from './components/Location/Location'
@@ -13,12 +18,12 @@ import Package from './components/Package/Package'
 const Root = [
     <BrowserRouter>
         <Switch>
-            {/* <Route path='signin' component={} />
-            <Route path='signup' component={} />
-            <Route path='signout' component={} />
-            <Route path='signup' component={} />
-            <Redirect from='/' to='signin'/> */}
+            {/* Auth */}
+            <Route path='/signin' component={SignIn} />
+            <Route path='/signup' component={SignUp} />
+            {/* <Route path='/signout' component={SignOut} /> */}
             
+
             <Route path='/location' component={Location} />
             {/* <Route path='location/create' component={} />
             <Route path='location/edit/:item' component={} /> */}
