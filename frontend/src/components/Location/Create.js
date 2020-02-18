@@ -1,21 +1,17 @@
 import React from 'react'
-import axios from 'axios'
 
-class SignUp extends React.Component {
+class Create extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-
-        }
     }
 
     render () {
         return (
             <div>
-
+                create view
             </div>
         )
     }
 }
 
-export default SignUp
+export default Create

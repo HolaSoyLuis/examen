@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Alert from '../extra/Alert'
 
-class SignIn extends React.Component {
+class Login extends React.Component {
     constructor(props){
         super(props)
 
@@ -59,7 +59,7 @@ class SignIn extends React.Component {
     render () {
         return (
             <div className="container mt-3 mb-3">
-                <Alert variant='info' subject="nothing, just a test" message='Please enter your credentials'/>
+                {/* <Alert variant='info' subject="nothing, just a test" message='Please enter your credentials'/> */}
                 <div className="row justify-content-center">
                     <div className="col-5">
                         <div className="card">
@@ -93,4 +93,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn
+export default Login
