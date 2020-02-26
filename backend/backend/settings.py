@@ -40,11 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-<<<<<<< HEAD
     'account',
-=======
-    'knox',
->>>>>>> 2c3d9fbddc0b0ab1e391f6b948a98b1afaf10345
     'schema',
 ]
 
@@ -148,7 +144,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 # ]
 
 # end cors headers configuration
-<<<<<<< HEAD
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
                'rest_framework.authentication.TokenAuthentication',
@@ -157,15 +152,4 @@ REST_FRAMEWORK = {
                 'rest_framework.permissions.IsAuthenticated',
     ),
 
-=======
-
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    # ]
-
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
->>>>>>> 2c3d9fbddc0b0ab1e391f6b948a98b1afaf10345
 }

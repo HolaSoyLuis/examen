@@ -2,16 +2,16 @@ import React from 'react'
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom'
 
 // login
-import Login from '../Auth/Login'
+import Login from './Auth/Login'
 
 // register
-import Register from '../Auth/Register'
+import Register from './Auth/Register'
 
 // location
-import Location from '../Location/Index'
+import Location from './Location/Index'
 
 // package
-import Package from '../Package/Index'
+import Package from './Package/Index'
 
 export default function Nav (props) {
     return (

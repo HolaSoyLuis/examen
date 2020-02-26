@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './extra/Nav'
+import Nav from './Nav'
 
 export default function App (props) {
     return (

@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import Alert from '../extra/Alert'
 
 class Login extends React.Component {
     constructor(props){
@@ -17,6 +16,21 @@ class Login extends React.Component {
         this.login = this.login.bind(this)
     }
 
+    /*
+    login () {
+        fetch('http://127.0.0.1:8000/user/authtoken/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state.credentials),
+        })
+        .then((response) => console.log(response.json()))
+        .then((data) => console.log('Success:', data))
+        .catch((error) => console.log('Error:', error))
+    }
+    */
+    
     login = () => {
         axios({
             method: 'POST',
@@ -27,13 +41,17 @@ class Login extends React.Component {
             }
         })
         .then((response) => {
-            console.log(response.statusText)
-            this.setState({
-                auth_token: response.data
-            })
+            if (response.status == 200) {
+                console.log(response.statusText)
+                this.setState({
+                    auth_token: response.data
+                })
+            }
         })
         .catch(error => console.log(error))
+        console.log(this.state.auth_token)
     }
+    
 
     // login = () => {
     //     axios.post(
@@ -59,7 +77,6 @@ class Login extends React.Component {
     render () {
         return (
             <div className="container mt-3 mb-3">
-                {/* <Alert variant='info' subject="nothing, just a test" message='Please enter your credentials'/> */}
                 <div className="row justify-content-center">
                     <div className="col-5">
                         <div className="card">
@@ -69,16 +86,12 @@ class Login extends React.Component {
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">
-                                        <label>
-                                            Username:
+                                        <label>Username:</label>
                                             <input type="text" name="username" value={this.state.credentials.username} onChange={this.inputHandle} className="form-control"/>
-                                        </label>
                                     </div>
                                     <div className="form-group">
-                                        <label>
-                                            Password:
+                                        <label>Password:</label>
                                             <input type="password" name="password" value={this.state.credentials.password} onChange={this.inputHandle} className="form-control"/>
-                                        </label>
                                     </div>
                                     <div className="form-group">
                                         <button onClick={this.login} className="btn btn-default">Submit</button>
