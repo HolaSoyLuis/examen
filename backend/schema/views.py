@@ -8,14 +8,14 @@ from account.serializers import UserSerializer
 
 # LOCATION ADMIN
 @api_view(['GET'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def location_list(request):
-	locations = Location.objetcs.all()
+	locations = Location.objects.all()
 	serializer = LocationSerializer(locations, many = True)
 	return Response(serializer.data)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def location_create(request):
 	serializer = LocationSerializer(data = request.data)
 	if serializer.is_valid():
@@ -24,10 +24,10 @@ def location_create(request):
 	return Response({'message': 'success'})
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def location_view(request, id):
 	try:
-		location = Location.objetcs.get(id = id)
+		location = Location.objects.get(id = id)
 	except Location.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	if request.method == 'GET':
@@ -35,10 +35,10 @@ def location_view(request, id):
 		return Response(serializer.data)
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def location_update(request, id):
 	try:
-		location = Location.objetcs.get(id = id)
+		location = Location.objects.get(id = id)
 	except Location.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	if request.method == 'PUT':
@@ -49,10 +49,10 @@ def location_update(request, id):
 		return Response({'message': 'success'})
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated, IsAdminUser])
-def location_list(request, id):
+# @permission_classes([IsAuthenticated, IsAdminUser])
+def location_delete(request, id):
 	try:
-		location = Location.objetcs.get(id = id)
+		location = Location.objects.get(id = id)
 	except Location.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	if request.method == 'DELETE':
@@ -66,19 +66,20 @@ def location_list(request, id):
 @permission_classes([IsAuthenticated])
 def package_user_list(request, id):
 	user = request.user
-	try:
-		packages = Package.objetcs.get(client = user.id)
-	except Package.DoesNotExist:
-		return Response(status = status.HTTP_404_NOT_FOUD)
+	packages = Package.objects.filter(client = user.id)
+	# try:
+	# 	packages = Package.objects.get(client = user.id)
+	# except Package.DoesNotExist:
+	# 	return Response(status = status.HTTP_404_NOT_FOUD)
 	serializer = PackageSerializer(packages, many = True)
 	return Response(serializer.data)
 
 # PACKAGE ADMIN
 @api_view(['GET'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_list(request):
 	try:
-		packages = Package.objetcs.all()
+		packages = Package.objects.all()
 	except Package.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	serializer = PackageSerializer(packages, many = True)
@@ -86,41 +87,41 @@ def package_admin_list(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def user_list(request):
 	try:
-		users = User.objetcs.all()
+		users = User.objects.all()
 	except User.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	serializer = UserSerializer(users, many = True)
 	return Response(serializer.data)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_create(request):
 	if request.method == 'POST':
-		package = PackageSerializer(data = request.data)
+		serializer = PackageSerializer(data = request.data)
 		if serializer.is_valid():
 			serializer.save()
 		# return Response(serializer.data)
 		return Response({'message': 'success'})
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_view(request, id):
 	try:
-		package = Package.objetcs.get(id = id)
+		package = Package.objects.get(id = id)
 	except Package.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	if request.method == 'GET':
 		serializer = PackageSerializer(package, many = False)
-		return Respose(serializer.data)
+		return Response(serializer.data)
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_update(request, id):
 	try:
-		package = Package.objetcs.get(id = id)
+		package = Package.objects.get(id = id)
 	except Package.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	if request.method == 'PUT':
@@ -131,10 +132,10 @@ def package_admin_update(request, id):
 		return Response({'message': 'success'})
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated, IsAdminUser])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_delete(request, id):
 	try:
-		package = Package.objetcs.get(id = id)
+		package = Package.objects.get(id = id)
 	except Package.DoesNotExist:
 		return Response(status = status.HTTP_404_NOT_FOUD)
 	if request.method == 'DELETE':
@@ -142,3 +143,18 @@ def package_admin_delete(request, id):
 			return Response({'message': 'success'})
 		else:
 			return Response({'message': 'failure'})
+
+# TEST
+'''
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def hello_user(request):
+	content = {'message': 'Congratulations, you are authenticated'}
+	return Response(content)
+
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsAdminUser])
+def hello_admin(request):
+	content = {'message': 'Congratulations, you are authenticated, and you are Admin User :D'}
+	return Response(content)
+'''
