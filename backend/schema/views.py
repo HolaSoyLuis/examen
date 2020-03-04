@@ -8,14 +8,14 @@ from account.serializers import UserSerializer
 
 # LOCATION ADMIN
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def location_list(request):
 	locations = Location.objects.all()
 	serializer = LocationSerializer(locations, many = True)
 	return Response(serializer.data)
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def location_create(request):
 	serializer = LocationSerializer(data = request.data)
 	if serializer.is_valid():
@@ -24,7 +24,7 @@ def location_create(request):
 	return Response({'message': 'success'})
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def location_view(request, id):
 	try:
 		location = Location.objects.get(id = id)
@@ -35,7 +35,7 @@ def location_view(request, id):
 		return Response(serializer.data)
 
 @api_view(['PUT'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def location_update(request, id):
 	try:
 		location = Location.objects.get(id = id)
@@ -49,7 +49,7 @@ def location_update(request, id):
 		return Response({'message': 'success'})
 
 @api_view(['DELETE'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def location_delete(request, id):
 	try:
 		location = Location.objects.get(id = id)
@@ -76,7 +76,7 @@ def package_user_list(request, id):
 
 # PACKAGE ADMIN
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_list(request):
 	try:
 		packages = Package.objects.all()
@@ -87,7 +87,7 @@ def package_admin_list(request):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def user_list(request):
 	try:
 		users = User.objects.all()
@@ -97,7 +97,7 @@ def user_list(request):
 	return Response(serializer.data)
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_create(request):
 	if request.method == 'POST':
 		serializer = PackageSerializer(data = request.data)
@@ -107,7 +107,7 @@ def package_admin_create(request):
 		return Response({'message': 'success'})
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_view(request, id):
 	try:
 		package = Package.objects.get(id = id)
@@ -118,7 +118,7 @@ def package_admin_view(request, id):
 		return Response(serializer.data)
 
 @api_view(['PUT'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_update(request, id):
 	try:
 		package = Package.objects.get(id = id)
@@ -132,7 +132,7 @@ def package_admin_update(request, id):
 		return Response({'message': 'success'})
 
 @api_view(['DELETE'])
-# @permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def package_admin_delete(request, id):
 	try:
 		package = Package.objects.get(id = id)
