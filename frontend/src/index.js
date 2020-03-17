@@ -1,36 +1,44 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
-import 'bootstrap/dist/css/bootstrap.css'
-// import Provider from 'react-redux'
-// import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
-/*
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 
-// login
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
+// HOME
+import Home from './components/Home'
+
+// AUTH
 import Login from './components/Auth/Login'
-
-// register
 import Register from './components/Auth/Register'
 
-// location
-import Location from './components/Location/Location'
+// LOCATION
+import LocationIndex from './components/Location/Index'
+import LocationCreate from './components/Location/Create'
+import LocationEdit from './components/Location/Edit'
 
-// package
-import Package from './components/Package/Package'
-*/
-const Root = [
-    // <BrowserRouter>
-    //     <Switch>
-    //         {/* Auth */}
-    //         <Route path='/login' component={Login} />
-    //         <Route path='/register' component={Register} />
-    //         <Route path='/location' component={Location} />
-    //         <Route path='/package' component={Package} />
-    //     </Switch>
-    // </BrowserRouter>
-]
-// ReactDOM.render(Root, document.getElementById('root'))
+// PACKAGE
+import PackageIndex from './components/Package/Index'
+import PackageCreate from './components/Package/Create'
+import PackageEdit from './components/Package/Edit'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+let urls = (
+    <Router>
+        <Switch>
+            {/* Home */}
+            <Route exact path="/" component={Home}></Route>
+            {/* Auth */}
+            <Route path="/login" component={Login}></Route>
+            <Route path="/register" component={Register}></Route>
+            {/* Location */}
+            <Route path="/location/index" component={LocationIndex}></Route>
+            <Route path="/location/create" component={LocationCreate}></Route>
+            <Route path="/location/edit/:id" component={LocationEdit}></Route>
+            {/* Package */}
+            <Route path="/package/index" component={PackageIndex}></Route>
+            <Route path="/package/create" component={PackageCreate}></Route>
+            <Route path="/package/edit/:id" component={PackageEdit}></Route>
+        </Switch>
+    </Router>
+)
+
+ReactDOM.render(urls, document.getElementById('root'))

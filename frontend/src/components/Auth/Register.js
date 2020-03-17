@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Nav from '../Nav'
 
 class Register extends React.Component {
     constructor(props){
@@ -12,7 +13,10 @@ class Register extends React.Component {
     render () {
         return (
             <div>
-                this is the register page!
+                <Nav />
+                <div>
+                    This is the register page
+                </div>
             </div>
         )
     }

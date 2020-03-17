@@ -1,10 +1,13 @@
 import React from 'react'
-import Nav from './Nav'
+// import Nav from './Nav'
+import Home from './Home'
 
-export default function App (props) {
+const App = (props) => {
     return (
         <div>
-            <Nav />
+            <Home />
         </div>
     )
 }
+
+export default App
