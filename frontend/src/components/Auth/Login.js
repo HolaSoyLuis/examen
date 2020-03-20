@@ -20,6 +20,7 @@ class Login extends React.Component {
         e.preventDefault()
         axios.post(
             'http://localhost:8000/account/login/',
+            // 'http://192.168.0.106:8000/account/login/',
             {
                 username: this.state.credentials.username,
                 password: this.state.credentials.password,
@@ -36,12 +37,11 @@ class Login extends React.Component {
                     password: '',
                 }
             })
-            console.log(this.state.auth)
+            sessionStorage.setItem('access', this.state.auth.access)
+            sessionStorage.setItem('refresh', this.state.auth.refresh)
+            console.log('access: ', sessionStorage.getItem('access'))
+            console.log('refresh: ', sessionStorage.getItem('refresh'))
         })
-    }
-
-    showMessage(){
-        console.log('message: this is a bullshit')
     }
 
     //generic input
@@ -59,7 +59,7 @@ class Login extends React.Component {
                 <Nav />
                 <div className="container mt-3 mb-3">
                     <div className="row justify-content-center">
-                        <div className="col-5">
+                        <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                             <div className="card">
                                 <div className="card-header">
                                     <div className="text-center">Sign In</div>
@@ -75,7 +75,9 @@ class Login extends React.Component {
                                                 <input type="password" name="password" value={this.state.credentials.password} onChange={this.inputHandle} className="form-control"/>
                                         </div>
                                         <div className="form-group">
-                                            <button className="btn btn-default">LogIn</button>
+                                            <div className="text-center">
+                                                <button className="btn btn-primary">LogIn</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
