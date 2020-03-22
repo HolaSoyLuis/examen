@@ -1,27 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-// // HOME
-// import Home from './Home'
-
-// // AUTH
-// import Login from './Auth/Login'
-// import Register from './Auth/Register'
-
-// // LOCATION
-// import LocationIndex from './Location/Index'
-// import LocationCreate from './Location/Create'
-// import LocationEdit from './Location/Edit'
-
-// // PACKAGE
-// import PackageIndex from './Package/Index'
-// import PackageCreate from './Package/Create'
-// import PackageEdit from './Package/Edit'
-
 export default function Nav (props) {
     return (
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <Link class="navbar-brand" to="/">RedCoders</Link>
+            <Link class="navbar-brand" to="/">Packages</Link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,24 +12,30 @@ export default function Nav (props) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
+                        <Link class="nav-link" to="/">Home</Link>
                     </li>
                     <li class="nav-item">
                         <Link class="nav-link" href="#">Link</Link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                            Package
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <Link class="dropdown-item" href="/">Action</Link>
-                        <Link class="dropdown-item" href="#">Another action</Link>
+                            <Link class="dropdown-item" to="/package/create/">Register</Link>
                         <div class="dropdown-divider"></div>
-                        <Link class="dropdown-item" href="#">Something else here</Link>
+                            <Link class="dropdown-item" to="/package/index/">List</Link>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <Link class="nav-link disabled" href="#">Disabled</Link>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Location
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <Link class="dropdown-item" to="/location/create/">Register</Link>
+                        <div class="dropdown-divider"></div>
+                            <Link class="dropdown-item" to="/location/index/">List</Link>
+                        </div>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">

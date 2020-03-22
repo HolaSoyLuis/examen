@@ -27,7 +27,7 @@ SECRET_KEY = 'xt^&$l--hh)ownfno)4)vla(a&(*1xadhf7)6sao&e^vhcl8rm'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.0.107',
+    '192.168.0.106',
     'localhost',
 ]
 
@@ -143,7 +143,7 @@ ADMINS = (
 
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
-    'http://localhost:3000',
+    'http://192.168.0.106:3000',
 ]
 
 # end cors headers configuration
