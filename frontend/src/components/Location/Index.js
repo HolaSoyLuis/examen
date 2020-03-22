@@ -4,6 +4,7 @@ import withLogin from '../HOC/withLogin'
 import withLoader from '../HOC/withLoader'
 import Nav from '../Nav'
 import Item from './Item'
+import SERVER from '../Global'
 
 class Index extends React.Component {
     constructor(props){
@@ -17,7 +18,7 @@ class Index extends React.Component {
     componentDidMount(){
         axios({
             method: 'GET',
-            url: 'http://localhost:8000/schema/location-list/',
+            url: SERVER + '/schema/location-list/',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('access')
             }
@@ -34,7 +35,7 @@ class Index extends React.Component {
     getData(){
         axios({
             method: 'GET',
-            url: 'http://localhost:8000/schema/location-list/',
+            url: SERVER + '/schema/location-list/',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('access')
             }

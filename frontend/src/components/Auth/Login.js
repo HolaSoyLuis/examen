@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Nav from '../Nav'
+import SERVER from '../Global'
 
 class Login extends React.Component {
     constructor(props){
@@ -19,8 +20,10 @@ class Login extends React.Component {
     login = (e) => {
         e.preventDefault()
         axios.post(
-            'http://localhost:8000/account/login/',
+            // 'http://localhost:8000/account/login/',
             // 'http://192.168.0.106:8000/account/login/',
+            // 'http://192.168.0.106:8000/account/login/',
+            SERVER + '/account/login/',
             {
                 username: this.state.credentials.username,
                 password: this.state.credentials.password,

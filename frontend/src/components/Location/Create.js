@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from '../Nav'
 import axios from 'axios'
+import SERVER from '../Global'
 
 class Create extends React.Component {
     constructor(props){
@@ -22,7 +23,7 @@ class Create extends React.Component {
         e.preventDefault()
         axios({
             method: 'POST',
-            url: 'http://localhost:8000/schema/location-create/',
+            url: SERVER + '/schema/location-create/',
             data: {
                 place: this.state.input
             },

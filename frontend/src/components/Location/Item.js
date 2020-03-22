@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import SERVER from '../Global'
 
 
 class Item extends React.Component {
@@ -13,7 +14,7 @@ class Item extends React.Component {
         e.preventDefault()
         axios({
             method: 'DELETE',
-            url: 'http://localhost:8000/schema/location-delete/' + this.props.id + '/',
+            url: SERVER + '/schema/location-delete/' + this.props.id + '/',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('access')
             }
