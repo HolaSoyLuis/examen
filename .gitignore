@@ -1,2 +1,4 @@
 backend/account/__pycache__
 backend/schema/__pycache__
+backend/backend/__pycache__
+backend/db.sqlite3
