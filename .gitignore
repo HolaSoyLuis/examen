@@ -6,3 +6,7 @@ backend/account/__pycache__
 backend/account/migrations
 backend/schema/__pycache__
 backend/schema/migrations
+backend/account/__pycache__
+backend/account/migrations
+backend/schema/__pycache__
+backend/schema/migrations
